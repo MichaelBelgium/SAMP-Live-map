@@ -25,6 +25,7 @@ define(PATH_JSON, "/home/samp/lmdmtest/scriptfiles/positions.json"); //full path
 ```PAWN
 #define FILE_JSON	"positions.json"  //the name of the file
 #define UPDATE_TIME	60000           //each time it updates the json file (milliseconds)
+#define MAX_PLAYERS 50              //Player slots
 ```
 
 ## Preview
