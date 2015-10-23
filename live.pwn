@@ -2,11 +2,13 @@
 
 #include <a_samp>
 #include <djson>
+#undef MAX_PLAYERS
 
 forward OnUpdateJSON();
 
 #define FILE_JSON	"positions.json"
 #define UPDATE_TIME	60000
+#define MAX_PLAYERS	50
 
 new gTimer,Name[MAX_PLAYERS][MAX_PLAYER_NAME];
 
@@ -44,7 +46,7 @@ public OnPlayerDisconnect(playerid, reason)
 public OnUpdateJSON()
 {
 	new Float:pos[3],string[16];
-	for(new i = 0, j = GetPlayerPoolSize(); i <= j; i++)
+	for(new i = 0; i < MAX_PLAYERS; i++)
 	{
 		if(!IsPlayerConnected(i))
 		{
