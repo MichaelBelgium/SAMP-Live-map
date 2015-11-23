@@ -1,5 +1,5 @@
 <?php
-	define(PATH_JSON, "/home/samp/lmdmtest/scriptfiles/positions.json");
+	define("PATH_JSON", "/home/samp/lmdmtest/scriptfiles/positions.json");
 	$json_pos = file_get_contents(PATH_JSON);
 ?>
 
