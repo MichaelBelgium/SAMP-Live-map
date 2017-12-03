@@ -1,6 +1,11 @@
 <?php
 	define("PATH_JSON", "/home/samp/lmdmtest/scriptfiles/positions.json");
+	define("API_KEY", "");
+
 	$json_pos = file_get_contents(PATH_JSON);
+
+	if(empty(API_KEY))
+	    die("You need a google api key first.");
 ?>
 
 <!DOCTYPE html>
@@ -23,25 +28,31 @@
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false&key=<?php echo API_KEY; ?>"></script>
         <script src="js/SanMap.min.js"></script>
 		<script type="text/javascript">
 			var p_pos = <?php echo (empty($json_pos)) ? "" : $json_pos ?>;
 
+			//for each full gta sa map in whatever resolution/color/type/.. you have you should make a type for it
+
 			var mapType = new SanMapType(0, 1, function (zoom, x, y) {
 		        return x == -1 && y == -1 
 				? "images/tiles/map.outer.png" 
-				: "images/tiles/map." + zoom + "." + x + "." + y + ".png";//Where the tiles are located
+				: "images/tiles/map." + zoom + "." + x + "." + y + ".png";
 		    });
 		    
 		    var satType = new SanMapType(0, 3, function (zoom, x, y) {
 		        return x == -1 && y == -1 
 				? null 
-				: "images/tiles/sat." + zoom + "." + x + "." + y + ".png";//Where the tiles are located
+				: "images/tiles/sat." + zoom + "." + x + "." + y + ".png";
 		    });
 		    
-		    var map = SanMap.createMap(document.getElementById('map-canvas'), 
-				{'Map': mapType, 'Satellite': satType}, 2, SanMap.getLatLngFromPos(0,0), false, 'Satellite');
+		    var map = SanMap.createMap(
+		        document.getElementById('map-canvas'),
+				{'Map': mapType, 'Satellite': satType}, //specify all your types from above here
+                2,
+                SanMap.getLatLngFromPos(0,0), false, 'Satellite'
+            );
 
 		    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById('map-legend'));
 

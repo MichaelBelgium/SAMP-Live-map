@@ -6,7 +6,8 @@ To be displayed on your website/ucp - Current location of player positions
 * <a href="http://forum.sa-mp.com/showthread.php?t=48439">DJson</a> (SA:MP plugin)
 
 ## Installation
-Download the latest version.
+Download the [latest](https://github.com/MichaelBelgium/SAMP-Live-map/releases/latest) version.
+
 After that then:
 
 ### SA:MP Server
@@ -16,11 +17,13 @@ After that then:
 
 ### Website
 - Put everything from the "web" directory on your webserver
+- Get [a google maps api key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 - Edit the PHP config shown below
 
 ## Config
 ```PHP
 define(PATH_JSON, "/home/samp/lmdmtest/scriptfiles/positions.json"); //full path to the json file
+define("API_KEY", "google-api-key-here");
 ```
 ```PAWN
 #define FILE_JSON	"positions.json"  //the name of the file
@@ -29,7 +32,7 @@ define(PATH_JSON, "/home/samp/lmdmtest/scriptfiles/positions.json"); //full path
 ```
 
 ## Preview
-There's a "live" version available at <a href="http://lm-dm.net/live_map/">lm-dm.net</a>
+There's a "live" version available at <a href="http://michaelbelgium.me/samp-live-map/">michaelbelgium.me</a>
 Ofcourse i'm not really online.
 
 The json file is:
