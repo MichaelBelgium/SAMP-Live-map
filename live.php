@@ -21,10 +21,6 @@
 
     <body>
         <div id="map-canvas"></div>
-        <div id="map-legend">
-            <h2>Legend</h2>
-            <p><img src="http://wiki.sa-mp.com/wroot/images2/1/15/Icon_56.gif" /> Players (click to view data)</p>
-        </div>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -54,8 +50,6 @@
                 SanMap.getLatLngFromPos(0,0), false, 'Satellite'
             );
 
-            map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById('map-legend'));
-
             if(p_pos !== "")
                 for (var i = 0; i < Object.keys(p_pos).length; i++) 
                     if(p_pos[i].online == 1) createMarker(i); 
@@ -72,8 +66,7 @@
 
                 var p_marker = new google.maps.Marker({
                     position: SanMap.getLatLngFromPos(p_pos[id].x, p_pos[id].y),
-                    map: map,
-                    icon: "http://wiki.sa-mp.com/wroot/images2/1/15/Icon_56.gif"
+                    map: map
                 });
 
                 google.maps.event.addListener(p_marker, 'click', function() {
