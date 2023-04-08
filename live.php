@@ -15,7 +15,6 @@
         <title>SA:MP Server Graph</title>
         <style type="text/css">
             #map-canvas { display: inline-block; height: 700px; width: 700px; }
-            #map-legend { padding: 10px; background-color: rgba(141, 142, 127, 0.46);}
         </style>
     </head>
 
@@ -50,7 +49,7 @@
                 SanMap.getLatLngFromPos(0,0), false, 'Satellite'
             );
 
-            if(p_pos !== "")
+            if(p_pos.length > 0)
                 for (var i = 0; i < Object.keys(p_pos).length; i++) 
                     if(p_pos[i].online == 1) createMarker(i); 
 
