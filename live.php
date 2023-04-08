@@ -22,12 +22,12 @@
     <body>
         <div id="map-canvas"></div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false&key=<?php echo API_KEY; ?>"></script>
-        <script src="js/SanMap.min.js"></script>
+        <script src="https://maps.google.com/maps/api/js?key=<?= API_KEY; ?>"></script>
+        <script src="js/SanMap.min.js"></script><!-- https://github.com/ikkentim/SanMap/tree/master/js_src/js -->
         <script type="text/javascript">
-            var p_pos = <?php echo (empty($json_pos)) ? "" : $json_pos ?>;
+            var p_pos = <?= (empty($json_pos)) ? "[]" : $json_pos ?>;
 
             //for each full gta sa map in whatever resolution/color/type/.. you have you should make a type for it
 
